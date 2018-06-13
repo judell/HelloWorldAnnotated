@@ -1,6 +1,6 @@
 # HelloWorldAnnotated
 
-This is a reference implementation of the following common pattern:
+This is a reference implementation of the following pattern:
 
 1. A user selects text in a page
 
