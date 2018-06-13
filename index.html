@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>HelloWorldAnnotated</title>
+<style>
+  blockquote {
+    font-style: italic;
+  }
+  hr {
+    width: 50%;
+    margin-left: 0;
+  }
+</style>
+<link rel="stylesheet" href="https://jonudell.info/hlib/hlib.css"></script>
+<script src="https://jonudell.info/hlib/hlib.bundle.js"></script>
+</head>
+
+<body>
+
+<div id="viewer"></div>
+
+<div id="postButton"></div>
+
+<hr>
+
+<div id="formContainer">
+  <div class="formField" id="userContainer"></div>
+  <div class="formField" id="groupContainer"></div>
+  <div class="formField" id="tokenContainer"></div>
+</div>
+
+<script>
+
+let params = {}
+
+function postAnno() {
+  let selectedIndex = hlib.getById('keyword').selectedIndex
+  params.tags.push(hlib.getById('keyword')[selectedIndex].value)
+  params.text = hlib.getById('comments').value
+  let payload = hlib.createAnnotationPayload(params)
+  let token = hlib.getToken()
+  hlib.postAnnotationAndRedirect(payload, token, 'annotations:query:tag:HelloWorldAnnotated')
+}
+
+function app() {
+  params = JSON.parse(decodeURIComponent(hlib.gup('data')))
+  params.username = hlib.getUser()
+  params.group = '__world__'
+  params.tags = ['HelloWorldAnnotated']
+ 
+  let tokenContainer = hlib.getById('tokenContainer')
+  hlib.createApiTokenInputForm(tokenContainer)
+
+  let groupContainer = hlib.getById('groupContainer')
+  hlib.createGroupInputForm(groupContainer)
+  
+  let userContainer = hlib.getById('userContainer')
+  hlib.createUserInputForm(userContainer)
+
+  hlib.getById('viewer').innerHTML =  `
+    <p>You came from <a href="${params.url}">${params.title}</a></p>
+    <p>In that page you selected:</p>
+      <blockquote>${params.exact}</blockquote
+    <p>Please pick the keyword that best describes the emotional content of the selection.</p>
+    <p>
+      <select id="keyword">
+        <option>StrongPositive </option>
+        <option>WeakPositive</option>
+        <option>Neutral</option>
+        <option>WeakNegative</option>
+        <option>StrongNegative</option>
+      </select>
+    </p>
+    <p>Please add comments here.</p>
+    <p>  
+      <textarea id="comments" rows="5" cols="60"></textarea>
+    </p>
+    <p>
+      When you're ready, please click the button to annotate your selection in ${params.title} with this information.
+    </p>      
+    `
+  
+  hlib.getById('postButton').innerHTML = `
+    <div id="postButton"><button onclick="postAnno()">post annotation</button></div>`
+}
+
+app();
+
+</script>
+
+</body>
+</html>
