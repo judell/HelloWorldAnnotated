@@ -11,6 +11,8 @@ This is a reference implementation of the following pattern:
 </ol>
 
 
-This example runs from a bookmarklet. To try it, drag this link -- <a href="javascript:(function(){var d=document; var s=d.createElement('script');s.setAttribute('src','https://jonudell.info/h/HelloWorldAnnotated/gather.js');d.head.appendChild(s)})();">HelloWorldAnnotated</a> -- to your browser's bookmark bar, then visit a web page, make a selection, and click the bookmarklet.
+This example runs from a bookmarklet that you can install from <a href="http://jonudell.net/h/#bookmarklets">here</a>
+
+javascript:(function(){var d=document; var s=d.createElement('script');s.setAttribute('src','https://jonudell.info/h/HelloWorldAnnotated/gather.js');d.head.appendChild(s)})();
 
 
