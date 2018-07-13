@@ -19,4 +19,6 @@ bar, or editing an existing bookmark and inserting this text in the URL field:
 
 Screencast: http://jonudell.net/h/HelloWorldAnnotated.mp4
 
+Blog post: https://blog.jonudell.net/2018/06/21/annotation-powered-apps-a-hello-world-example/
+
 
