@@ -12,8 +12,7 @@ This is a reference implementation of the following pattern:
 
 This example runs from a bookmarklet.
 
-You can "install" it by dragging the HelloWorldAnnotated link from http://jonudell.net/h/#bookmarklets to your browser's bookmarks 
-bar, or editing an existing bookmark and inserting this text in the URL field: 
+You can "install" it by creating a bookmark with this text in the URL field: 
 
 > javascript:(function(){var d=document; var s=d.createElement('script');s.setAttribute('src','https://jonudell.info/h/HelloWorldAnnotated/gather.js');d.head.appendChild(s)})();"
 
